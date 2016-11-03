@@ -138,9 +138,9 @@
 							eq       | `if (a === b)`                       | `{{if (eq a b)}}`
 							not-eq   | `if (a !== b)`                       | `{{if (not-eq a b)}}`
 							not      | `if (!a)`                            | `{{if (not a)}}`
-							and      | `if (a && b)`                        | `{{if (and a b)}}`
-							or       | <code>if (a &#124;&#124; b)</code>   | `{{if (or a b)}}`
-							xor      | `if (a && !b || !a && b)`            | `{{if (xor a b)}}`
+							and      | `if (a &amp;&amp; b)`                | `{{if (and a b)}}`
+							or       | `if (a or b)`                        | `{{if (or a b)}}`
+							xor      | `if (a &amp;&amp; !b or !a &amp;&amp; b)`            | `{{if (xor a b)}}`
 							gt       | `if (a > b)`                         | `{{if (gt a b)}}`
 							gte      | `if (a >= b)`                        | `{{if (gte a b)}}`
 							lt       | `if (a < b)`                         | `{{if (lt a b)}}`
@@ -669,7 +669,7 @@ export default Factory.extend({
 				progress: true,
 				history: true,
 				center: true,
-				width: 1200,
+				width: 1400,
     		height: 1024,
 
 				transition: 'slide', // none/fade/slide/convex/concave/zoom
