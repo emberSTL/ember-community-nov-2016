@@ -1,52 +1,691 @@
 <!doctype html>
-<html>
+<html lang="en">
+
 	<head>
-
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="chrome=1">
-		<title>reveal.js - The HTML Presentations Framework</title>
 
-		<link rel="stylesheet" href="css/normalize.css">
-		<link rel="stylesheet" href="css/main.css">
+		<title>reveal.js – The HTML Presentation Framework</title>
 
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
 
 		<!--[if lt IE 9]>
-		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<script src="lib/js/html5shiv.js"></script>
 		<![endif]-->
-
 	</head>
+
 	<body>
-		<div class="wrapper">
 
-			<header>
+		<div class="reveal">
 
-				<h1>reveal.js</h1>
-				<p>
-					The HTML Presentation Framework &mdash; Site coming soon
-				</p>
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h2>Learn about the Ember ecosystem/community­</h2>
+					<h4>Ember.js STL</h4>
+					<p>
+						<small>Presented by <a href="http://knownsubset.github.io">Nathan Dauber</a></small>
+					</p>
+				</section>
 
-			</header>
+				<section>
+					<h2>Building your app</h2>
+					<p>
+						Plugins that make it easier for you to write code, handle users, or building the assets.
+					</p>
+				</section>
 
-			<footer>
+				<!-- Example of nested vertical slides -->
 
-				<p>
-					<a href="http://lab.hakim.se/reveal-js">Try the demo</a>
-					<a href="https://github.com/hakimel/reveal.js/releases">Download</a>
-				</p>
+				<section>
+					<section>
+						<h2>ember-cli-favicon</h2>
+						<p>Automatically build and include all the </p>
+						<p>various platform / device favicon formats </p>
+						<p>from a <em>single</em> source favicon.png.</p>
+						<br>
+						<a href="https://github.com/davewasmer/ember-cli-favicon">@github</a>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							### source file
+							Place the file at `public/favicon.png`
+							### ember-cli-build.js
 
-			</footer>
+							```javascript
+							favicon: {
+								config: {
+									appName: 'OncoInformatix',
+									appDescription: 'Registry Platform',
+									developerName: 'Radialogica',
+									developerURL: 'http://www.radialogica.com',
+									background: "#fff",
+									opengraph: false,
+									icons: {
+										coast: false,
+										opengraph: false,
+									},
+								}
+							},
+							```
+						</script>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>ember-power-select</h2>
+						<p>Powerful and customizable</p>
+						<p>select component for ember</p>
+						<br>
+						<a href="http://www.ember-power-select.com/">@github</a>
+					</section>
+					<section>
+						<h2>Why use it?</h2>
+						<ul>
+						<li>Browsers always had a select tag but it is very limited.</li>
+						<li>They can only display plain text, they look totally different in each browser and you can't reliably style them.</li>
+						<li>Devs have built their own select components to bypass all these limitations.</li>
+						</ul>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							```handlebars
+							{{#power-select
+							  options=countries
+							  selected=destination
+							  onchange=(action "foo")
+							  as |country|
+							}}
+							  <img src="{{country.flagUrl}}" class="icon-flag">
+								<strong>{{country.name}}</strong>
+							{{/power-select}}
+							```
+						</script>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>ember-truth-helpers</h2>
+						<p>Ember HTMLBars Helpers for {{if}} &amp; {{unless}}: not, and, or, eq &amp; is-array</p>
+						<br>
+						<a href="https://github.com/jmurphyau/ember-truth-helpers">@github</a>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							## Usage
+							Helper   | JavaScript                           | HTMLBars
+							---------|--------------------------------------|-------------------
+							eq       | `if (a === b)`                       | `{{if (eq a b)}}`
+							not-eq   | `if (a !== b)`                       | `{{if (not-eq a b)}}`
+							not      | `if (!a)`                            | `{{if (not a)}}`
+							and      | `if (a && b)`                        | `{{if (and a b)}}`
+							or       | <code>if (a &#124;&#124; b)</code>   | `{{if (or a b)}}`
+							xor      | `if (a && !b || !a && b)`            | `{{if (xor a b)}}`
+							gt       | `if (a > b)`                         | `{{if (gt a b)}}`
+							gte      | `if (a >= b)`                        | `{{if (gte a b)}}`
+							lt       | `if (a < b)`                         | `{{if (lt a b)}}`
+							lte      | `if (a <= b)`                        | `{{if (lte a b)}}`
+							is-array | `if (Ember.isArray(a))`              | `{{if (is-array a)}}`
+						</script>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>ember-composable-helpers</h2>
+						<p>Composable helpers for declarative templating in Ember</p>
+						<br>
+						<a href="https://github.com/DockYard/ember-composable-helpers">@github</a>
+					</section>
+					<section>
+						<h2>Why use it?</h2>
+						<p>Just look at the Array operation available.</p>
+
+						<ul>
+					    <li>array</li>
+							<li>map</li>
+							<li>map-by</li>
+							<li>sort-by</li>
+							<li>filter</li>
+							<li>filter-by</li>
+							<li>reject-by</li>
+							<li>find-by</li>
+							<li>intersect</li>
+							<li>invoke</li>
+							<li>union</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Continued</h2>
+						<ul>
+							<li>take</li>
+							<li>drop</li>
+							<li>reduce</li>
+							<li>repeat</li>
+							<li>reverse</li>
+							<li>range</li>
+							<li>join</li>
+							<li>compact</li>
+							<li>contains</li>
+							<li>append</li>
+							<li>chunk</li>
+							<li>without</li>
+						</ul>
+					</section>
+					<section>
+						<h2>And Again!</h2>
+						<ul>
+							<li>shuffle</li>
+							<li>flatten</li>
+							<li>object-at</li>
+							<li>slice</li>
+							<li>next</li>
+							<li>has-next</li>
+							<li>previous</li>
+							<li>has-previous</li>
+						</ul>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							```handlebars
+							{{#each (map-by "fullName" users) as |fullName|}}
+							  <input type="text" value={{fullName}} onchange={{action (mut newName)}}>
+							  <button {{action (pipe updateFullName saveUser) newName}}>
+							    Update and save {{fullName}} to {{newName}}
+							  </button>
+							{{/each}}
+							```
+						</script>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>ember-radio-buttons</h2>
+						<p>Implementation of radio buttons for ember that works with ember-cli</p>
+						<br>
+						<a href="https://github.com/Blooie/ember-radio-buttons">@github</a>
+					</section>
+					<section>
+						<h2>Why use it?</h2>
+						<p>If you need to capture a group selection</p>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							```handlebars
+							{{radio-button value='one' checked=selectedNumber}}
+							{{radio-button value='two' checked=selectedNumber}}
+							```
+						</script>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>ember-cli-deploy</h2>
+						<p>Simple, flexible deployment for your Ember.js app</p>
+						<br>
+						<a href="http://ember-cli-deploy.com/">@github</a>
+					</section>
+					<section>
+						<h2>A Deployment Pipeline</h2>
+						<p>Build, upload, activate.</p>
+						<p>A simple pipeline that keeps your deploy logic maintainable and reusable.</p>
+					</section>
+					<section>
+						<h2>Plugins for Every Task</h2>
+						<p>11 deploy hooks lay the base for a vibrant plugin ecosystem.</p>
+						<p>You'll find plugins that upload to S3, notify Slack and more.</p>
+						<p>Assemble them to create the perfect deployment strategy for your app.</p>
+					</section>
+					<section>
+						<h2>One-Line deploys</h2>
+						<p>A configured pipeline lets you deploy your app with a single command.</p>
+						<p>The magic of conventions, for the last piece of your development process.</p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>ember-shepherd</h2>
+						<p>Ember addon wrapper for a site tour</p>
+						<br>
+						<a href="http://shipshapecode.github.io/ember-shepherd/">@github</a>
+					</section>
+					<section>
+						<h2>Why use it?</h2>
+						<p>Guide your users through a tour of your app.</p>
+						<a href="http://shipshapecode.github.io/ember-shepherd/">Demo</a>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>ember-cp-validations</h2>
+						<p>An EmberJS validation framework that is completely and utterly computed property based.</p>
+						<br>
+						<a href="https://github.com/offirgolan/ember-cp-validations">@github</a>
+					</section>
+					<section>
+						<h2>Why use it?</h2>
+						<ul>
+					    <li>Lazily computed validations</li>
+					    <li>Ruby on rails inspired validators</li>
+					    <li>Support for Ember Data Models, Objects, Components, Services, etc.</li>
+					    <li>Support for nested models and objects</li>
+					    <li>Synchronous and asynchronous support</li>
+					    <li>Easily integrated with Ember Data's DS.Errors</li>
+					    <li>No observers. Seriously... there are none. Like absolutely zero....</li>
+					    <li>Custom validators</li>
+					    <li>I18n support</li>
+					    <li>Debounceable validations</li>
+					    <li>Warning validations</li>
+					    <li>Dirty tracking</li>
+						</ul>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							```javascript
+							// models/user.js
+							import Ember from 'ember';
+							import DS from 'ember-data';
+							import { validator, buildValidations } from 'ember-cp-validations';
+
+							const User = DS.Model.extend(Validations, {
+  'username': attr('string'),
+  'password': attr('string'),
+  'email': attr('string')
+});
+
+export default User;
+							```
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							```javascript
+							const Validations = buildValidations({
+							  username: validator('presence', true),
+							  password: [
+							    validator('presence', true),
+							    validator('length', { min: 4, max: 8}),
+							  ],
+							  email: [
+							    validator('presence', true),
+							    validator('format', { type: 'email' })
+							  ],
+							  emailConfirmation: [
+							    validator('presence', true),
+							    validator('confirmation', {
+							      on: 'email',
+							      message: '{description} do not match',
+							      description: 'Email addresses'
+							    })
+							  ]
+							});
+							```
+						</script>
+					</section>
+				</section>
+
+
+				<section>
+					<h2>Maintaining</h2>
+					<p>
+						Plugins that make it easier for you to respond to problems that arise in the wild
+					</p>
+				</section>
+
+				<section>
+					<section>
+						<h2>ember-cli-sentry</h2>
+						<p>Add support for Sentry to Ember.js</p>
+						<br>
+						<a href="https://github.com/damiencaselli/ember-cli-sentry">@github</a>
+					</section>
+					<section>
+						<h2>Why use it?</h2>
+						<ul>
+							<li>Enable safe use of Raven.js whether you are in development mode or not.</li>
+							<li>Inject a logging service to routes, components, controllers and models to access Raven object.</li>
+							<li>Provide a default logger generator that should work for the vast majority of people.</li>
+							<li>Add an opt-out bower dependency to ravenjs.</li>
+							<li>Provide rather complete customization.</li>
+						</ul>
+						<br>
+						<p>You don't have to use <em>this</em> one</p>
+						<h2> but <strong>use one</strong>! </h2>
+
+					</section>
+					<section data-markdown>
+							```javascript
+							// your-app/services/custom-logger.js
+export { default } from 'ember-cli-sentry/services/raven';
+							```
+					</section>
+					<section data-markdown>
+						```javascript
+						//config/environment.js
+						module.exports = function(environment) {
+const ENV = {
+	sentry: {
+      cdn: 'https://cdn.ravenjs.com/3.6.1/raven.min.js',
+      dsn: 'https://dsn@sentry.io/project_id',
+      serviceName: 'raven',
+      globalErrorCatching: true,
+      development: false,
+      debug: false,
+    },
+}
+						```
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>ember-metrics</h2>
+						<p>Send data to multiple analytics integrations without re-implementing new API</p>
+						<br>
+						<a href="https://github.com/poteto/ember-metrics">@github</a>
+					</section>
+					<section>
+						<h2>Why use it?</h2>
+						<p>Makes it really easy to track where your users go in your app.</p>
+					</section>
+					<section data-markdown>
+							```javascript
+							//config/environment.js
+							module.exports = function(environment) {
+  const ENV = {
+    metricsAdapters: [
+      {
+        name: 'GoogleAnalytics', // or Mixpanel, Segment, Piwik
+        environments: ['development', 'production'],
+        config: { id: 'UA-XXXX-Y' }
+      },
+      {
+        name: 'LocalAdapter',
+        environments: ['all'], // default
+        config: { foo: 'bar' }
+      }
+    ]
+  }
+}
+							```
+					</section>
+				</section>
+
+				<section>
+					<h2>Testing</h2>
+					<p>
+						Plugins that make it easier for you to write tests for your code, show what tests to write, and setup the testing state.
+					</p>
+				</section>
+
+				<section>
+					<section>
+						<h2>ember-cli-eslint</h2>
+						<p>ESLint for Ember CLI apps and addons</p>
+						<br>
+						<a href="https://github.com/ember-cli/ember-cli-eslint">@github</a>
+					</section>
+					<section>
+						<h2>Why use it?</h2>
+						<p>The pluggable linting utility for JavaScript that</p>
+						<p>let's you codify your coding standards by automatically</p>
+						<p> generating tests for every file in your project.</p>
+					</section>
+					<section data-markdown>
+							```javascript
+							//.eslintrc.js
+							module.exports = {
+  root: true,
+  parser: "babel-eslint",
+  parserOptions: {
+    ecmaVersion: 6,
+    sourceType: 'module'
+  },
+  extends: 'ember',
+  env: {
+    'browser': true
+  },
+  rules: {
+    "array-bracket-spacing": 2,
+    "arrow-parens": [2, "as-needed"],
+    "arrow-spacing": [2, { "before": true, "after": true }],
+    "brace-style": [2, '1tbs', { "allowSingleLine": true }],
+    "camelcase": [2, { "properties": "never" }],
+    "comma-dangle": [2, "only-multiline"],
+    "comma-spacing": 0,
+    "comma-style": [2, "last"],
+    "complexity": 2,
+    "consistent-this": 0,
+    "eol-last": 2,
+    "indent": [2, 2], //2 spaced indentation
+    "key-spacing": [2, { "mode": "strict" }],
+    "linebreak-style": 2,
+    "max-len": [1, 300],
+    "max-lines": [1, 150],
+    "max-depth": 2,
+    "max-nested-callbacks": 2,
+    "newline-after-var": 0,
+    "no-console": 0,
+    "no-extra-parens": 0,
+    "no-implicit-coercion": 0,
+    "no-loop-func": 2,
+    "no-multi-spaces": 2,
+    "no-multiple-empty-lines": [2, { max: 1, maxEOF: 1, maxBOF: 0 }],
+    "no-param-reassign": 1,
+    "no-restricted-syntax": 0,
+    "no-ternary": 0,
+    "no-throw-literal": 0,
+    "no-undefined": 0,
+    "no-use-before-define": [2, "nofunc"],
+    "no-void": 0,
+    "no-warning-comments": 0,
+    "object-curly-spacing": [2, "always"],
+    "one-var": 0,
+    "prefer-reflect": 0,
+    "quote-props": 0,
+    "quotes": [2, "single"],
+    "space-before-blocks": 2,
+    "space-before-function-paren": [2, { "anonymous": "never", "named": "never" }],
+    "keyword-spacing": 2,
+    "space-in-parens": 2,
+    "space-infix-ops": 2,
+    "space-unary-ops": 2,
+    "spaced-comment": 2,
+    "valid-jsdoc": 0,
+    "vars-on-top": 0,
+    "no-magic-numbers": 0,
+    "arrow-body-style": [2, "as-needed"],
+    "no-return-assign": 2,
+    "newline-before-return": 0,
+    "newline-per-chained-call": 0,
+    "no-negated-condition": 2,
+    "no-empty-function": 1,
+    "template-curly-spacing": 0,
+    "no-confusing-arrow": [2, { allowParens: true }],
+    "consistent-return": 0,
+    "max-params": 0,
+  }
+};
+							```
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>ember-cli-code-coverage</h2>
+						<p>Code coverage for ember apps using Istanbul</p>
+						<br>
+						<a href="https://github.com/kategengler/ember-cli-code-coverage">@github</a>
+					</section>
+					<section>
+						<h2>Why use it?</h2>
+						<p>Blanket.js was discontinued, and directs people to use Istanbul</p>
+						<a href="http://gotwarlost.github.io/istanbul/public/coverage/lcov-report/index.html">Istanbul demo</a>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>ember-cli-page-object</h2>
+						<p>Create page objects for your acceptance and integration tests.</p>
+						<br>
+						<a href="http://ember-cli-page-object.js.org/docs/v1.6.x/">@github</a>
+					</section>
+					<section>
+						<h2>Why use it?</h2>
+						<ul>
+							<li>Mostly declarative</li>
+							<li>Quick to set up and uses convention over configuration</li>
+							<li>Extremely easy to extend</li>
+							<li>Unobtrusive</li>
+							<li>Agnostic to the testing framework (but really hooked on Ember!)</li>
+						</ul>
+					</section>
+					<section data-markdown>
+							```javascript
+							const page = PageObject.create({
+  visit: visitable('/'),
+  username: fillable('#username'),
+  password: fillable('#password'),
+  submit: clickable('button'),
+  error: text('.errors')
+});
+
+test('my awesome test', function(assert) {
+  page.visit()
+    .username('admin')
+    .password('invalid')
+    .submit();
+
+  andThen(() => {
+    assert.equal(page.error, 'Invalid credentials');
+  });
+});
+							```
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>ember-cli-mirage</h2>
+						<p>Build, test and demo your app using a client-side server </p>
+						<br>
+						<a href="http://www.ember-cli-mirage.com/">@github</a>
+					</section>
+					<section>
+						<h2>Why use it?</h2>
+						<ul>
+							<li>routes</li>
+							<li>a database and models, for storing data and defining relationships</li>
+							<li>factories and fixtures, for stubbing data</li>
+							<li>serializers, for formatting responses</li>
+						</ul>
+					</section>
+					<section data-markdown>
+							```javascript
+							// mirage/config.js
+export default function() {
+  this.namespace = 'api';
+
+  this.get('/authors', () => {
+    return {
+      authors: [
+        {id: 1, name: 'Zelda'},
+        {id: 2, name: 'Link'},
+        {id: 3, name: 'Epona'},
+      ]
+    };
+  });
+}
+							```
+					</section>
+					<section data-markdown>
+							```javascript
+							// mirage/factories/author.js
+import { Factory, faker } from 'ember-cli-mirage';
+
+export default Factory.extend({
+  name(i) { return `Person ${i}`; },
+  age: 28,
+  admin: false,
+  avatar() { return faker.internet.avatar(); }
+});
+//Generates
+[{
+  name: 'Person 1',
+  age: 28,
+  admin: false,
+  avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/bergmartin/128.jpg'
+},
+{
+  name: 'Person 2',
+  age: 28,
+  admin: false,
+  avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/nemanjaivanovic/128.jpg'
+}]
+							```
+					</section>
+				</section>
+				<section style="text-align: left;">
+					<h1>THE END</h1>
+
+					<h4>Sources</h4>
+					<p>
+						- <a href="https://emberobserver.com">Ember Observer</a> <br>
+						- <a href="http://emberlinks.com/">Ember Links</a>
+						- <a href="https://embercommunity.slack.com/messages/-announcements/">Ember Community Slack - #-announcements</a>
+					</p>
+				</section>
+
+			</div>
 
 		</div>
 
-		<script>
-		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
 
-		  ga('create', 'UA-43375306-1', 'revealjs.com');
-		  ga('send', 'pageview');
+		<script>
+
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+				width: 1200,
+    		height: 1024,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
 		</script>
+
 	</body>
 </html>
